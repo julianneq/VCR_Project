@@ -7,3 +7,6 @@ processSoilData.py will call downloadSoilData.py to download the data. It will t
 soil characteristics using ZonalStatisticsAsTable and store them in database files (.dbf). It will then call convertDBFtoCSV.py
 to convert these to csv's, and lastly call joinSoilCSVs.py to combine all of the csv's for different soil characteristics into 
 one file.
+
+The outputs are WoredaSoilData.csv or KebeleSoilData.csv, depending on which AggLevel is chosen. Both are included in this
+directory.
