@@ -27,7 +27,7 @@ def intersectGrid(AggLevel, workingDir, variable):
     #for temperature, row (row) and column (col) of netCDF file corresponding to each grid in the shapefile
     ap.AddField_management(Grid, "LAT", "DOUBLE", 7, 2, "", "", "", "", "")
     ap.AddField_management(Grid, "LONG", "DOUBLE", 7, 2, "", "", "", "", "")
-    ap.AddField_management(Grid, "row", "SHORT", 5, "", "", "", "", "", "")
+    ap.AddField_management(Grid, "row", "SHORT", 6, "", "", "", "", "", "")
     if variable == "Temp":
         ap.AddField_management(Grid, "col", "SHORT", 5, "", "", "", "", "", "")
 
