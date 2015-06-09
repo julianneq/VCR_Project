@@ -9,3 +9,6 @@ the data from the points in Ethiopia and store them in the matrix allData. makeT
 determine the weights of each grid cell to apply to each woreda or kebele when calculating area-weighted average precipitation,
 and stores them in WeightMatrix. Finally, it finds the dot product of allData and WeightMatrix to determine these area-weighted
 averages.
+
+The output is either WoredaTempDBF.csv or KebeleTempDBF.csv, depending on which level was chosen. The weight matrix will also be
+written to TempWoredaWeightMatrix.csv or TempKebeleWeightMatrix.csv.
