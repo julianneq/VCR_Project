@@ -12,3 +12,6 @@ grid cell. Next, it calls readRainData.py to read in all of the data from the po
 allData. makeRainDBF.py then calls findRainWeightMatrix.py to determine the weights of each grid cell to apply to each woreda or
 kebele when calculating area-weighted average precipitation and stores them in WeightMatrix. Finally, it finds the dot product 
 of allData and WeightMatrix to determine these area-weighted averages.
+
+The output is either WoredaRainDBF.csv or KebeleRainDBF.csv, depending on which level was chosen. The weight matrix will also be
+written to RainWoredaWeightMatrix.csv or RainKebeleWeightMatrix.csv.
