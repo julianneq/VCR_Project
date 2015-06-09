@@ -1,4 +1,5 @@
 import arcpy as ap
+import os
 from convertDBFtoCSV import convertDBFtoCSV
 
 def intersectGrid(AggLevel, workingDir, variable):
@@ -6,42 +7,43 @@ def intersectGrid(AggLevel, workingDir, variable):
 
     #create grid shapefile
     Grid = workingDir + "\\All" + variable + "Grid.shp"
-    if variable == "Temp":
-        origin_coord = "-180 -90"
-        nrows = "360"
-        ncols = "720"
-        polygon_width = "0.5 degrees"
-    else:
-        origin_coord = "-20.05 -40.05"
-        nrows = "801"
-        ncols = "751"
-        polygon_width = "0.1 degrees"
+    if(os.path.exists(Grid)==False):
+        if variable == "Temp":
+            origin_coord = "-180 -90"
+            nrows = "360"
+            ncols = "720"
+            polygon_width = "0.5 degrees"
+        else:
+            origin_coord = "-20.05 -40.05"
+            nrows = "801"
+            ncols = "751"
+            polygon_width = "0.1 degrees"
     
-    polygon_height = polygon_width
-    ap.GridIndexFeatures_cartography(Grid, "", "", "", "", polygon_width, polygon_height, origin_coord, nrows, ncols)
-    ap.DefineProjection_management(Grid,coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',\
-    SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]")
+        polygon_height = polygon_width
+        ap.GridIndexFeatures_cartography(Grid, "", "", "", "", polygon_width, polygon_height, origin_coord, nrows, ncols)
+        ap.DefineProjection_management(Grid,coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',\
+        SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]")
     
-    #add 3 or 4 fields to grid shapefile: latitude (LAT), longitude (LONG) and
-    #for precipitation, row (row) of text file corresponding to each grid in the shapefile;
-    #for temperature, row (row) and column (col) of netCDF file corresponding to each grid in the shapefile
-    ap.AddField_management(Grid, "LAT", "DOUBLE", 7, 2, "", "", "", "", "")
-    ap.AddField_management(Grid, "LONG", "DOUBLE", 7, 2, "", "", "", "", "")
-    ap.AddField_management(Grid, "row", "SHORT", 6, "", "", "", "", "", "")
-    if variable == "Temp":
-        ap.AddField_management(Grid, "col", "SHORT", 5, "", "", "", "", "", "")
+        #add 3 or 4 fields to grid shapefile: latitude (LAT), longitude (LONG) and
+        #for precipitation, row (row) of text file corresponding to each grid in the shapefile;
+        #for temperature, row (row) and column (col) of netCDF file corresponding to each grid in the shapefile
+        ap.AddField_management(Grid, "LAT", "DOUBLE", 7, 2, "", "", "", "", "")
+        ap.AddField_management(Grid, "LONG", "DOUBLE", 7, 2, "", "", "", "", "")
+        ap.AddField_management(Grid, "row", "SHORT", 6, "", "", "", "", "", "")
+        if variable == "Temp":
+            ap.AddField_management(Grid, "col", "SHORT", 5, "", "", "", "", "", "")
 
-    #calculate lat and long fields
-    expression1 = "float(!SHAPE.CENTROID!.split()[0])"
-    expression2 = "float(!SHAPE.CENTROID!.split()[1])"
-    ap.CalculateField_management(Grid, "LONG", expression1, "PYTHON")
-    ap.CalculateField_management(Grid, "LAT", expression2, "PYTHON")
+        #calculate lat and long fields
+        expression1 = "float(!SHAPE.CENTROID!.split()[0])"
+        expression2 = "float(!SHAPE.CENTROID!.split()[1])"
+        ap.CalculateField_management(Grid, "LONG", expression1, "PYTHON")
+        ap.CalculateField_management(Grid, "LAT", expression2, "PYTHON")
 
-    #calculate row and col fields
-    if variable == "Temp":
-        Grid = calcTempFields(Grid)
-    else:
-        Grid = calcRainFields(Grid)
+        #calculate row and col fields
+        if variable == "Temp":
+            Grid = calcTempFields(Grid)
+        else:
+            Grid = calcRainFields(Grid)
 
     #clip the grid to Ethiopia and convert its .dbf to a .csv for later use
     GridClip = workingDir + "\\" + variable + "GridClip" + AggLevel + ".shp"
