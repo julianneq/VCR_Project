@@ -7,7 +7,7 @@ def intersectGrid(AggLevel, workingDir, variable):
 
     #create grid shapefile
     Grid = workingDir + "\\All" + variable + "Grid.shp"
-    if(os.exists(Grid)==False):
+    if(os.path.exists(Grid)==False):
         if variable == "Temp":
             origin_coord = "-180 -90"
             nrows = "360"
