@@ -6,7 +6,7 @@ def downloadTempData(workingDir):
     and processes them at AggLevel = "Woreda" or "Kebele"'''
 
     #open a log file and write the current date to it
-    fdLog = file(workingDir + '\\GHCNupdate.log','a')
+    fdLog = file(workingDir + '\\TempUpdate.log','a')
     fdLog.write(str(datetime.datetime.today()) + '\n')
     fdLog.flush()
 
