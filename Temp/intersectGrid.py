@@ -76,18 +76,6 @@ def intersectGrid(AggLevel, workingDir, variable):
     
     return intersectCSV, GridCSV
 
-def addFields(attribute, fieldmappings):
-    FieldIndex = fieldmappings.findFieldMapIndex(attribute)
-    fieldmap = fieldmappings.getFieldMap(FieldIndex)
-    field = fieldmap.outputField
-    field.name = "mean_" + attribute
-    field.aliasName = "mean_" + attribute
-    field.outputField = field
-    fieldmap.mergeRule = "mean"
-    fieldmappings.replaceFieldMap(FieldIndex, fieldmap)
-    
-    return fieldmappings
-
 def calcTempFields(Grid):
     expression1 = "getCol(!LONG!)"
     code_block1 = """def getCol(long):
