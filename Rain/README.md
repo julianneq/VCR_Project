@@ -9,6 +9,6 @@ data in each woreda or kebele.
 
 makeRainDBF.py first calls intersectGrid.py to determine the percentage of each woreda's or kebele's area occupied by each NOAA
 grid cell. Next, it calls readRainData.py to read in all of the data from the points in Ethiopia and stores it in the matrix
-allData. makeRainDBF.py then calls findWeightMatrix.py to determine the weights of each grid cell to apply to each woreda or 
+allData. makeRainDBF.py then calls findRainWeightMatrix.py to determine the weights of each grid cell to apply to each woreda or
 kebele when calculating area-weighted average precipitation and stores them in WeightMatrix. Finally, it finds the dot product 
 of allData and WeightMatrix to determine these area-weighted averages.
