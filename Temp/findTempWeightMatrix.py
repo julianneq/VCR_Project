@@ -38,17 +38,13 @@ def findTempWeightMatrix(AggLevel, intersectCSV, gridCells):
         cellID.append(row+col)
         ID.append(Temp_area[i+1,IDcol])
         
-    #Determine all unique grid cell locations
-    allCellIDs = np.unique(cellID[::-1])
-    allCellIDs = list(allCellIDs)
-
     #Determine all unique woreda or kebele IDs
     allIDs = np.unique(ID[::-1])
     allIDs = list(allIDs)
 
     #Build a matrix, WeightMatrix, to store the weights (by area) of each grid cell in each woreda or kebele;
     #Each row is a different Temp grid cell and each column is a different woreda or kebele
-    WeightMatrix = np.zeros([len(allCellIDs),len(allIDs)])
+    WeightMatrix = np.zeros([len(gridCells),len(allIDs)])
     if AggLevel == 'Woreda':
         areaCol = 21
     elif AggLevel == 'Kebele':
@@ -69,7 +65,7 @@ def findTempWeightMatrix(AggLevel, intersectCSV, gridCells):
                 WeightMatrix[j,i] = 0
 
     #Write WeightMatrix to a file
-    f = open('Temp' + AggLevel + 'WeightMatrix.txt','w')
+    f = open('Temp' + AggLevel + 'WeightMatrix.csv','w')
     f.write(',')
     for i in range(np.shape(WeightMatrix)[1]):
         f.write(str(allIDs[i])+',')
