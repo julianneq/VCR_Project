@@ -48,9 +48,9 @@ def intersectGrid(AggLevel, workingDir, variable):
     #clip the grid to Ethiopia and convert its .dbf to a .csv for later use
     GridClip = workingDir + "\\" + variable + "GridClip" + AggLevel + ".shp"
     if AggLevel == 'Woreda':
-        EthiopiaBorders = workingDir[0:-13] + "EthiopiaPolitical\\WoredasAdindan.shp"
+        EthiopiaBorders = os.path.dirname(workingDir) + "\\Shapefiles\\WoredasAdindan.shp"
     elif AggLevel == 'Kebele':
-        EthiopiaBorders = workingDir[0:-13] + "EthiopiaPolitical\\Ethiopia Kebeles without Somali region.shp"
+        EthiopiaBorders = os.path.dirname(workingDir) + "\\Shapefiles\\Ethiopia Kebeles without Somali region.shp"
 
     ap.Clip_analysis(Grid, EthiopiaBorders, GridClip)
     dbf = GridClip[0:-4] + ".dbf"
