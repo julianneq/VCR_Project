@@ -1,6 +1,6 @@
 This directory contains all the code for simulating maize yields under different fertilizer scenarios. Simulate them by calling simulateMaizeYields(model, numYears, FertScenario).
 
-model = 1, 2, or 3 and corresponds to MaizeModel1.txt, MaizeModel2.txt and MaizeModel3.txt;
+model = 1, 2, or 3 corresponding to MaizeModel1.txt, MaizeModel2.txt or MaizeModel3.txt, respectively;
 numYears is the number of simulated years;
 and FertScenario is a vector of fertilizer application scenarios, where each element is an application amount in kg/ha.
 You do not need to include 0 kg/ha in the FertScenario vector, as this will be modeled automatically as a base case.
