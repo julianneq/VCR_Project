@@ -8,7 +8,7 @@ def simulateMaizeYields(model, numYears, FertScenario):
     FertScenario is a vector of modeled fertilizer application rates in kg/ha'''
     
     #Find the statistical model coefficients, matrix of predictor values
-    #and statistical parameters for generating weather  
+    #and statistical parameters for generating weather;
     #weather distribution is modeled as bivariate normal with mean seasonal temp
     #and log(total seasonal precip)
     modelCoeffs, simMatrix, WeatherParams, WIDs = readInData(model)
