@@ -5,6 +5,9 @@ numYears is the number of simulated years;
 and FertScenario is a vector of fertilizer application scenarios, where each element is an application amount in kg/ha.
 You do not need to include 0 kg/ha in the FertScenario vector, as this will be modeled automatically as a base case.
 
+Model results are written to simulated0kgYields.csv, simulated*kgYields.csv where "*" corresponds to the amounts in FertScenario, simulatedRain.csv, and simulatedTemp.csv. Simulated yields are point estimates from the statistical crop model.
+Errors by woreda were subsequently added to these simulated yields.
+
 simulateMaizeYields.py calls readInData.py to read in the necessary data, which include:
 the soil parameters (from WoredaSoilData.csv), 
 weather generating parameters (from WeatherParams.csv)
