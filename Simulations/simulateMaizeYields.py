@@ -2,7 +2,7 @@ import numpy as np
 from readInData import readInData
 import os
 
-def findMaizeYields(model, numYears, FertScenario):
+def simulateMaizeYields(model, numYears, FertScenario):
     '''Calculates a distribution of VCRs for a given crop in each woreda; \n
     model = 1 or 2, numYears is the number of simulated years, and \n
     FertScenario is the modeled amount of fertilizer applied in kg/ha'''
