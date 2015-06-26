@@ -92,6 +92,12 @@ def simulateYield(numYears, simMatrix, weatherRVs, modelCoeffs, model):
     
     #convert yield from quintal/ha to kg/ha
     simYield = simYield*100
+    
+    #replace all negative yields with 0
+    for i in range(np.shape(simYield)[0]):
+        for j in range(np.shape(simYield)[1]):
+            if simYield[i,j] < 0:
+                simYield[i,j] = 0
         
     return simYield
     
