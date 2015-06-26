@@ -3,9 +3,10 @@ from readInData import readInData
 import os
 
 def simulateMaizeYields(model, numYears, FertScenario):
-    '''Calculates a distribution of VCRs for a given crop in each woreda; \n
-    model = 1 or 2, numYears is the number of simulated years, and \n
-    FertScenario is the modeled amount of fertilizer applied in kg/ha'''
+    '''Simulates numYears of maize yields under 0 kg fertilizer /ha and FertScenario; \
+    model = 1, 2 or 3; numYears is the number of simulated years; and \
+    FertScenario is a vector of modeled fertilizer application rates in kg/ha'''
+    
     #Find the statistical model coefficients, matrix of predictor values
     #and statistical parameters for generating weather  
     #weather distribution is modeled as bivariate normal with mean seasonal temp
@@ -43,7 +44,7 @@ def simulateMaizeYields(model, numYears, FertScenario):
     newDir = os.getcwd() + "\\Model" + str(model) + "\\"     
     writeCSVs(rainMatrix,newDir + 'simulatedRain.csv')
     writeCSVs(tempMatrix,newDir + 'simulateTemp.csv')
-    writeCSVs(baseYield,newDir + 'simulatedBaseYields.csv')
+    writeCSVs(baseYield,newDir + 'simulated0kgYields.csv')
     
     #Calculate yields under FertScenarios
     for j in range(len(FertScenario)):
@@ -60,7 +61,6 @@ def simulateMaizeYields(model, numYears, FertScenario):
         
         newYield = simulateYield(numYears, simMatrix, weatherRVs, modelCoeffs, model)
         newYield = np.concatenate((WIDs,newYield),1)
-        newDir = os.getcwd() + "\\Model" + str(model) + "\\" + str(FertScenario[j]) + "kg\\"    
         writeCSVs(newYield,newDir + 'simulated'+ str(FertScenario[j]) + 'kgYields.csv')
     
     return None
