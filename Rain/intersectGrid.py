@@ -3,7 +3,7 @@ import os
 from convertDBFtoCSV import convertDBFtoCSV
 
 def intersectGrid(AggLevel, workingDir, variable):
-    '''Intersects the GHCN temperature data grid with the AggLevel = "Woreda" or "Kebele" shapefile'''
+    '''Intersects the NOAA precipitation data grid with the AggLevel = "Woreda" or "Kebele" shapefile'''
 
     #create grid shapefile
     Grid = workingDir + "\\All" + variable + "Grid.shp"
