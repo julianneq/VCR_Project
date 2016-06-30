@@ -3,9 +3,8 @@ import datetime
 import gzip
 import os
 
-def downloadSoilData(AggLevel, workingDir):
-	'''Downloads all 250m AfSIS soil data from http://www.isric.org/content/african-soilgrids-250m-geotiffs \n
-	and processes them at AggLevel = "Woreda" or "Kebele"'''
+def downloadSoilData(workingDir):
+	'''Downloads all 250m AfSIS soil data from http://www.isric.org/content/african-soilgrids-250m-geotiffs'''
 
 	#open a log file and write the current date to it
 	fdLog = file(workingDir + '\\AfSISupdate.log','a')
