@@ -4,7 +4,7 @@ import os
 import gzip
 
 def downloadRainData():
-    '''Downloads 0.5 degree monthly temperature data from ftp://ftp.cdc.noaa.gov/Datasets/ghcncams/ \n
+    '''Downloads 0.1 degree daily rainfall data from ftp.cpc.ncep.noaa.gov/fews/fewsdata/africa/rfe2/bin/ \n
     and processes them at AggLevel = "Woreda" or "Kebele"'''
 
     #open a log file and write the current date to it
