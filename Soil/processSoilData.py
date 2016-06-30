@@ -11,7 +11,7 @@ def processSoilData(AggLevel):
     workingDir = os.getcwd()
 
     #Download all of the soil data
-    downloadSoilData(AggLevel, workingDir)
+    downloadSoilData(workingDir)
 
     #Turn on Spatial Statistics package and define field over which ZonalStatisticsAsTable will be calculated (Woreda or Kebele ID)
     ap.CheckOutExtension("Spatial")
