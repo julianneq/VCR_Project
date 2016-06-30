@@ -18,7 +18,7 @@ def downloadRainData():
     ftp.login('','')
     ftp.cwd('fews/fewsdata/africa/rfe2/bin/')
 
-    #download the temperature netCDF file
+    #download the rainfall binary files
     directoryList = []
     ftp.retrlines('LIST', directoryList.append)
     rainFiles = []
