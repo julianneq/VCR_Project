@@ -93,7 +93,7 @@ def calcTempFields(Grid):
     return Grid
 
 def calcRainFields(Grid):
-    expression = "750*(10*(!LAT!+40))+10*(!LONG!+20)"
+    expression = "751*(10*(!LAT!+40))+10*(!LONG!+20)"
     ap.CalculateField_management(Grid, "row", expression, "PYTHON")
     
     return Grid
