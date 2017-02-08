@@ -45,3 +45,5 @@ def downloadRainData():
     ftp.close()
 
     return None
+
+downloadRainData()
