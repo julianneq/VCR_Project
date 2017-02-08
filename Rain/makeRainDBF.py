@@ -1,10 +1,13 @@
 import os
+import sys
 import numpy as np
 from intersectGrid import intersectGrid
 from readRainData import readRainData
 from findRainWeightMatrix import findRainWeightMatrix
 
-def makeRainDBF(AggLevel):
+first_arg = sys.argv[1]
+
+def makeRainDBF(AggLevel=first_arg):
     '''Makes a .csv database file with average daily rainfall at AggLevel = "Woreda" or "Kebele"'''
     
     #Set the working directory
@@ -51,3 +54,6 @@ def writeFiles(AggLevel, Rain, ID, Year, Month, Day):
     f.close()
         
     return None
+
+if __name__ == "__main__":
+    makeRainDBF()
