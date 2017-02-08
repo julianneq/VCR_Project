@@ -1,4 +1,4 @@
-python downloadRainData
+python downloadRainData.py
 
 f95 convert_rfe_bin2asc.f -o convert_rfe_bin2asc
 
@@ -10,4 +10,4 @@ do
 	rm ${BINFILE}
 done
 
-python makeRainDBF $1
+python makeRainDBF.py $1
