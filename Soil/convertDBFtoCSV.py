@@ -2,7 +2,7 @@ import csv
 import arcpy as ap
 
 def convertDBFtoCSV(dbf):
-    '''Converts database file of average AggLevel soil data to a csv'''
+    '''Converts database file to a csv'''
     table = dbf
     outfile = dbf[0:-4] + ".csv"
 
