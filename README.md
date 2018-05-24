@@ -18,3 +18,5 @@ Ethiopian Rural Economy (https://books.google.cl/books?id=z6D2d0sBUqwC&lpg=PT7&o
 README.md within the "AEZ" subdirectory.
 
 The woreda and kebele shapefiles are located in the "Shapefiles" subdirectory. These were found from ArcGIS online.
+
+Licensed under the GNU Lesser General Public License.
